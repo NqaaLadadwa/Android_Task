@@ -1,0 +1,30 @@
+//CREATING TABLES FOR BOAT AND SAILOR\\
+----------------------------------------
+=> CREATE TABLE BOAT(ID INTEGER PRIMARY KEY AUTOINCREMENT,BOAT_NAME TEXT, COLOR TEXT
+
+=> CREATE TABLE SAILOR(ID INTEGER PRIMARY KEY AUTOINCREMENT,SAILOR_NAME TEXT, NATIONALITY TEXT,BOAT_ID INTEGER, FOREIGN KEY(BOAT_ID) REFERENCES BOAT(_ID)
+
+********************************************************************************
+//Button 1: List the number of sailors for each nationality\\
+-------------------------------------------------------------
+
+> For the Palestinian nationality:
+select COUNT (*) from SAILOR WHERE NATIONALITY='Palestinian'
+
+> For the Jordanian nationality:
+select COUNT (*) from SAILOR WHERE NATIONALITY='Jordanian'
+
+> For the Qatari nationality:
+select COUNT (*) from SAILOR WHERE NATIONALITY='Qatari'
+
+*********************************************************************************
+//Buttons 2: List the name of the boats in red color\\
+-------------------------------------------------------
+
+SELECT BOAT_NAME FROM BOAT WHERE COLOR='Red'
+
+*********************************************************************************
+//Button 3: List Palestinian sailor names who have a red boat\\
+-------------------------------------------------------
+
+SELECT SAILOR_NAME, BOAT.ID FROM SAILOR, BOAT WHERE SAILOR.BOAT_ID = BOAT.ID AND NATIONALITY='Palestinian' AND COLOR='Red'
